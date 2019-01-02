@@ -55,6 +55,18 @@ elif [[ $check_insta == *'0'* ]]; then
 printf "\e[1;93mNot Found!\e[0m\n"
 fi
 
+## Naver
+
+check_insta=$(curl -s -H "Accept-Language: en" "https://blog.naver.com/$username" -L | grep -o 'The link you followed may be broken'; echo $?)
+printf "\e[1;77m[\e[0m\e[1;92m+\e[0m\e[1;77m] Naver: \e[0m"
+
+if [[ $check_insta == *'1'* ]]; then
+printf "\e[1;92m Found!\e[0m https://blog.naver.com/%s\n" $username
+printf "https://blog.naver.com/%s\n" $username > $username.txt
+elif [[ $check_insta == *'0'* ]]; then
+printf "\e[1;93mNot Found!\e[0m\n"
+fi
+
 ## Facebook
 
 printf "\e[1;77m[\e[0m\e[1;92m+\e[0m\e[1;77m] Facebook: \e[0m"

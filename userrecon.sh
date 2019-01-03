@@ -67,6 +67,17 @@ elif [[ $check_insta == *'0'* ]]; then
 printf "\e[1;93mNot Found!\e[0m\n"
 fi
 
+## Tistory
+check_insta=$(curl -s -H "Accept-Language: kr" "https://$username.tistory.com/" -L | grep -o '존재하지 않는 페이지 입니다'; echo $?)
+printf "\e[1;77m[\e[0m\e[1;92m+\e[0m\e[1;77m] Tistory: \e[0m"
+
+if [[ $check_insta == *'1'* ]]; then
+printf "\e[1;92m Found!\e[0m https://%s.tistory.com/\n" $username
+printf "https://%s.tistory.com/\n" $username > $username.txt
+elif [[ $check_insta == *'0'* ]]; then
+printf "\e[1;93mNot Found!\e[0m\n"
+fi
+
 ## Facebook
 
 printf "\e[1;77m[\e[0m\e[1;92m+\e[0m\e[1;77m] Facebook: \e[0m"

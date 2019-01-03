@@ -57,7 +57,7 @@ fi
 
 ## Naver
 
-check_insta=$(curl -s -H "Accept-Language: en" "https://blog.naver.com/$username" -L | grep -o 'The link you followed may be broken'; echo $?)
+check_insta=$(curl -s -H "Accept-Language: kr" "https://blog.naver.com/$username" -L | grep -o '유효하지 않은 요청입니다'; echo $?)
 printf "\e[1;77m[\e[0m\e[1;92m+\e[0m\e[1;77m] Naver: \e[0m"
 
 if [[ $check_insta == *'1'* ]]; then

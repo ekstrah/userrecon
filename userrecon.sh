@@ -3,6 +3,10 @@
 # Author: @thelinuxchoice
 # https://github.com/thelinuxchoice/usercheck
 
+
+#passing username argument while executing the codes
+
+
 trap 'printf "\n";partial;exit 1' 2
 
 banner() {
@@ -18,8 +22,6 @@ printf "\e[1;77m | |_| \__ \  __/ |  |  _ <  __/ (_| (_) | | | | \e[0m\e[1;92m\ 
 printf "\e[1;77m  \___/|___/\___|_|  |_| \_\___|\___\___/|_| |_|  \e[0m\e[1;92m\        / \e[0m\n"
 printf "                   \e[1;92mv1.0, Author: @thelinuxchoice\e[0m   \e[1;92m\  __  / \e[0m\n"
 printf "                                                    \e[1;92m'.__.' \e[0m\n"
-                                                
-
 
 }
 
@@ -33,9 +35,12 @@ fi
 }
 
 scanner() {
-
-read -p $'\e[1;92m[\e[0m\e[1;77m?\e[0m\e[1;92m] Input Username:\e[0m ' username
-
+if [[ -z $1 ]]
+then
+	read -p $'\e[1;92m[\e[0m\e[1;77m?\e[0m\e[1;92m] Input Username:\e[0m ' username
+else
+	username="$1"
+fi
 if [[ -e $username.txt ]]; then
 printf "\e[1;92m[\e[0m\e[1;77m*\e[0m\e[1;92m] Removing previous file:\e[0m\e[1;77m %s.txt" $username
 rm -rf $username.txt
@@ -1061,5 +1066,4 @@ fi
 partial
 }
 banner
-scanner
-
+scanner "$1"
